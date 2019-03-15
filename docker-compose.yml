@@ -1,0 +1,31 @@
+version: '3.1'
+
+volumes:
+    grafana_data_storage: {}
+    rnode_data_storage: {}
+
+networks:
+  metrics:
+    external:
+      name: perf_harness
+
+services:
+  grafana-ui:
+    image: grafana/grafana:5.2.1
+    networks:
+      - metrics
+    ports:
+      - 127.0.0.1:13000:3000
+    env_file:
+      - ./grafana/grafana.conf
+    volumes:
+      - /var/lib/grafana:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+
+  influxdb:
+    image: influxdb:1.7.3
+    networks:
+      - metrics
+    volumes:
+      - ./influxdb.conf:/etc/influxdb/influxdb.conf
+      - /var/lib/influxdb:/var/lib/influxdb
