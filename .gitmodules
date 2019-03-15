@@ -1,0 +1,4 @@
+[submodule "roles/certbot"]
+	path = roles/certbot
+	url = https://github.com/rchain/ansible-role-certbot.git
+	branch = rtestnet-monitoring
