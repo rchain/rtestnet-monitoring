@@ -35,6 +35,11 @@
     src: metrics.service.j2
     dest: "{{ metrics_checkout_dir }}/metrics.service"
 
+- name: Render grafana.conf
+  template:
+    src: grafana.conf.j2
+    dest: "{{ metrics_checkout_dir }}/grafana.conf"
+
 - name: Fix attibutes
   become: yes
   file:
