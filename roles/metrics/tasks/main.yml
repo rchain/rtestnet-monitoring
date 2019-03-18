@@ -87,6 +87,12 @@
     name: perf_harness
     driver: bridge
 
+- name: Install docker-compose package
+  become: yes
+  package:
+    name: docker-compose
+    state: present
+
 - name: Run systemd unit at boot
   become: yes
   systemd:
