@@ -9,6 +9,6 @@ grafana_nginx_server_name: !vault |
           39613838623637313865616362616264373835313634663832353837336434643632
 
 
-metrics_checkout_dir: /opt/perf-harness-metrics
+metrics_checkout_dir: /opt/rtestnet-monitoring
 metrics_checkout_commit: "{{ checkout_commit | default('master') }}"
 metrics_user: metrics

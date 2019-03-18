@@ -23,7 +23,7 @@
 
 - name: Checkout runtime files
   git:
-    repo: 'https://github.com/rchain/perf-harness/'
+    repo: 'https://github.com/rchain/rtestnet-monitoring.git'
     clone: yes
     update: yes
     force: yes
