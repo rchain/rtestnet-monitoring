@@ -49,12 +49,6 @@
     dest: /etc/systemd/system/metrics.service
     state: link
 
-- name: Install nginx package
-  become: yes
-  package:
-    name: nginx
-    state: present
-
 # Files in the directory below are created with a user id managed by docker,
 # since that's a mounted volume.  I don't see how to restrict permissions just
 # to that user, hence the "u=rwx,g=rwx,o=rwx" permissions.
@@ -66,14 +60,6 @@
     group: "{{ metrics_user }}"
     mode: "u=rwx,g=rwx,o=rwx"
     recurse: yes
-
-- name: Configure nginx
-  become: yes
-  template:
-    src: grafana.nginx.conf.j2
-    dest: /etc/nginx/sites-enabled/grafana.conf
-  notify:
-    - reload nginx
 
 - name: Register systemd unit
   become: yes
