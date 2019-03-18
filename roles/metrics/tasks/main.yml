@@ -49,13 +49,6 @@
     dest: /etc/systemd/system/metrics.service
     state: link
 
-- name: Symlink rchain-perf-harness.target file
-  become: yes
-  file:
-    src: "{{ metrics_checkout_dir }}/systemd/rchain-perf-harness.target"
-    dest: /etc/systemd/system/rchain-perf-harness.target
-    state: link
-
 - name: Install nginx package
   become: yes
   package:
