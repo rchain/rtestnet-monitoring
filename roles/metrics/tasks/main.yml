@@ -62,6 +62,18 @@
     name: nginx
     state: present
 
+# Files in the directory below are created with a user id managed by docker,
+# since that's a mounted volume.  I don't see how to restrict permissions just
+# to that user, hence the "u=rwx,g=rwx,o=rwx" permissions.
+- name: Update Grafana data directory permissions
+  become: yes
+  file:
+    path: /var/lib/grafana
+    owner: "{{ metrics_user }}"
+    group: "{{ metrics_user }}"
+    mode: "u=rwx,g=rwx,o=rwx"
+    recurse: yes
+
 - name: Configure nginx
   become: yes
   template:
