@@ -1,10 +1,8 @@
 [Unit]
 Requires=docker.service
 After=docker.service
-StopWhenUnneeded=true
+
 [Service]
 User=metrics
-ExecStart=/usr/bin/docker-compose -f {{ metrics_checkout_dir }}/docker-compose.yml up
-ExecStopPost=/usr/bin/docker-compose -f {{ metrics_checkout_dir }}/docker-compose.yml down
-[Install]
-WantedBy=rchain-perf-harness.target
+ExecStart=/usr/bin/docker-compose --file {{ metrics_checkout_dir }}/docker-compose.yml up
+ExecStopPost=/usr/bin/docker-compose --file {{ metrics_checkout_dir }}/docker-compose.yml down
