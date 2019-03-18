@@ -1,5 +1,11 @@
 ---
 
+- name: Install Docker package
+  become: yes
+  package:
+    name: docker.io
+    state: present
+
 - name: Create {{ metrics_user }} user
   become: yes
   user:
@@ -50,6 +56,12 @@
     dest: /etc/systemd/system/rchain-perf-harness.target
     state: link
 
+- name: Install nginx package
+  become: yes
+  package:
+    name: nginx
+    state: present
+
 - name: Configure nginx
   become: yes
   template:
@@ -63,7 +75,14 @@
   systemd:
     daemon_reload: true
 
+- name: Install Docker PIP package
+  become: yes
+  package:
+    name: python-docker
+    state: present
+
 - name: Create docker network
+  become: yes
   docker_network:
     name: perf_harness
     driver: bridge
