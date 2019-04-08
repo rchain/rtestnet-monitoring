@@ -24,8 +24,11 @@ services:
 
   influxdb:
     image: influxdb:1.7.3
+    ports:
+      - 25826:25826/udp
     networks:
       - metrics
     volumes:
       - ./influxdb.conf:/etc/influxdb/influxdb.conf
       - /var/lib/influxdb:/var/lib/influxdb
+      - /usr/share/collectd:/usr/share/collectd:ro
