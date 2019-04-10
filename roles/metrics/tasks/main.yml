@@ -100,3 +100,10 @@
   systemd:
     name: metrics
     state: restarted
+
+
+- name: Install collectd types.db file
+  become: yes
+  copy:
+    src: types.db
+    dest: /usr/share/collectd/types.db
