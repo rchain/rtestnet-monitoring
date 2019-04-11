@@ -32,3 +32,4 @@ services:
       - ./influxdb.conf:/etc/influxdb/influxdb.conf
       - /var/lib/influxdb:/var/lib/influxdb
       - /usr/share/collectd:/usr/share/collectd:ro
+      - /tmp/influxdb:/tmp
