@@ -2,6 +2,9 @@
 Requires=docker.service
 After=docker.service
 
+[Install]
+WantedBy=multi-user.target
+
 [Service]
 User=metrics
 ExecStart=/usr/bin/docker-compose --file {{ metrics_checkout_dir }}/docker-compose.yml up
