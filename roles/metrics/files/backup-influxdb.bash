@@ -34,7 +34,7 @@ main () {
     local backup_dir_basename=$(basename "$backup_dir")
     docker exec "$container" influxd backup -portable -database testnet1_collectd "/tmp/$backup_dir_basename"
 
-    tarball_basename="influxdb.tar"
+    tarball_basename="testnet1_collectd.tar"
     trap remove_tarball EXIT
     tar --create --verbose --directory="$backup_dir" --file="$tarball_basename" .
 
