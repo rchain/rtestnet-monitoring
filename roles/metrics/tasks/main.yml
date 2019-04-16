@@ -119,3 +119,7 @@
   systemd:
     name: cron
     state: restarted
+
+- name: Cleanup Docker cruft
+  become: yes
+  shell: docker system prune --all --volumes --force
