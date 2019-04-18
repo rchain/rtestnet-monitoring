@@ -120,6 +120,12 @@
     src: types.db
     dest: /usr/share/collectd/types.db
 
+- name: Install gsutil
+  become: yes
+  apt:
+    name: google-cloud-sdk
+    state: present
+
 - name: Install InfluxDB backup cron job
   become: yes
   copy:
