@@ -19,5 +19,4 @@ grafana_admin_password: !vault |
 
 
 metrics_checkout_dir: /opt/rtestnet-monitoring
-metrics_checkout_commit: "{{ checkout_commit | default('master') }}"
 metrics_user: metrics
